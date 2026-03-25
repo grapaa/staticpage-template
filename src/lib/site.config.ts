@@ -7,7 +7,7 @@ export const site = {
   tagline: 'Fork. Prompt. Ship.',
   description:
     'A production-ready Astro 6 template for building static customer websites with AI-assisted vibecoding.',
-  url: 'https://YOUR-USERNAME.github.io',
+  url: 'https://grapaa.github.io/staticpage-template',
   locale: 'en',
   email: 'hello@example.com',
   location: 'Your City, Country',
