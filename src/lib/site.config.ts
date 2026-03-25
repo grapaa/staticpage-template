@@ -3,25 +3,25 @@
  * Edit this file first after forking the template.
  */
 export const site = {
-  name: 'Acme Corp',
-  tagline: 'Building better products, faster.',
+  name: 'Static Page Template',
+  tagline: 'Fork. Prompt. Ship.',
   description:
-    'Acme Corp helps businesses grow through smart strategy and modern technology.',
+    'A production-ready Astro 6 template for building static customer websites with AI-assisted vibecoding.',
   url: 'https://YOUR-USERNAME.github.io',
   locale: 'en',
   email: 'hello@example.com',
-  location: 'Oslo, Norway',
+  location: 'Your City, Country',
 
   /** Navigation links — rendered in Header and Footer */
   nav: [
-    { label: 'Services', href: '/services' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Getting Started', href: '/about' },
+    { label: 'Features', href: '/services' },
+    { label: 'Prompts', href: '/contact' },
   ],
 
   /** Primary CTA shown in Header and Hero */
   cta: {
-    label: 'Get in touch',
-    href: '/contact',
+    label: 'Get started',
+    href: '/about',
   },
 } as const;

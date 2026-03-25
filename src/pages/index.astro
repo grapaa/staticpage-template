@@ -11,61 +11,86 @@ import { site } from '../lib/site.config';
   <Header slot="header" />
 
   <Hero
-    eyebrow="Strategy + Technology"
-    headline="We help businesses"
-    headlineAccent="grow smarter."
-    subtext={site.description}
-    primaryCta={{ label: site.cta.label, href: site.cta.href }}
-    secondaryCta={{ label: 'Our services', href: '/services' }}
+    eyebrow="Fork → Prompt → Ship"
+    headline="Static Page"
+    headlineAccent="Template"
+    subtext="A production-ready Astro 6 template designed to be vibecoded with AI. Fork it, describe your customer, and let Claude or Copilot build the site."
+    primaryCta={{ label: 'How it works', href: '/services' }}
+    secondaryCta={{ label: 'Get started', href: '/about' }}
   />
 
-  <!-- Services preview -->
+  <!-- What's included -->
   <section class="py-24 bg-background">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-text">What we do</h2>
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-text">What's included</h2>
         <p class="mt-4 text-muted max-w-xl mx-auto">
-          We combine strategic thinking with modern technology to deliver measurable results.
+          Everything you need to go from fork to deployed customer site in minutes, not days.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card
-          icon="🎯"
-          title="Strategy"
-          description="Clarify your direction, identify growth opportunities, and build a roadmap that works."
+          icon="🏗️"
+          title="4 Starter Pages"
+          description="Home, About, Services, and Contact — all fully responsive with a clean, modern layout ready to customize."
+          href="/about"
+        />
+        <Card
+          icon="🎨"
+          title="Theme System"
+          description="Swap colors and fonts in one CSS file. The entire site updates instantly — no hunting through components."
           href="/services"
         />
         <Card
-          icon="⚡"
-          title="Technology"
-          description="Modern web, automation, and AI tools that remove friction and accelerate delivery."
-          href="/services"
-        />
-        <Card
-          icon="📈"
-          title="Growth"
-          description="Data-driven campaigns and optimizations that turn visitors into customers."
-          href="/services"
+          icon="🤖"
+          title="AI-Ready"
+          description="Ships with CLAUDE.md, Copilot instructions, and 4 built-in Claude skills for guided vibecoding."
+          href="/contact"
         />
       </div>
     </div>
   </section>
 
-  <!-- CTA banner -->
+  <!-- Tech stack -->
+  <section class="py-24 bg-surface border-t border-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-text">Built with</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          { icon: '🚀', name: 'Astro 6', detail: 'Static-first, zero JS by default' },
+          { icon: '🎨', name: 'Tailwind CSS v4', detail: 'Utility-first with @theme variables' },
+          { icon: '📝', name: 'TypeScript', detail: 'Type-safe components' },
+          { icon: '📦', name: 'GitHub Pages', detail: 'Free deploy on push to main' },
+        ].map((tech) => (
+          <div class="text-center p-6 rounded-xl border border-border">
+            <div class="text-3xl mb-3">{tech.icon}</div>
+            <h3 class="font-semibold text-text">{tech.name}</h3>
+            <p class="text-muted text-xs mt-1">{tech.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="py-20 bg-primary">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white mb-6">
-        Ready to get started?
+        Ready to build a customer site?
       </h2>
       <p class="text-white/65 mb-10 text-lg">
-        Let's talk about your goals and how we can help you reach them.
+        Fork this repo, open Claude Code or VS Code with Copilot, and say:<br />
+        <span class="text-accent italic">"Set up this template for a bakery called Bread & Butter"</span>
       </p>
       <a
-        href="/contact"
+        href="/about"
         class="inline-flex items-center px-8 py-4 text-sm font-medium bg-white text-primary rounded-full hover:bg-accent-light hover:text-primary-dark transition-all duration-200"
       >
-        {site.cta.label}
+        See the quickstart guide →
       </a>
     </div>
   </section>

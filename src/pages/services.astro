@@ -6,68 +6,118 @@ import Card from '../components/Card.astro';
 import { site } from '../lib/site.config';
 ---
 
-<BaseLayout title={`Services — ${site.name}`} description="Explore what we offer and how we can help.">
+<BaseLayout title={`Features — ${site.name}`} description="What's inside the template: AI skills, theme system, components, and deployment.">
   <Header slot="header" />
 
   <!-- Page header -->
   <section class="bg-primary-dark py-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">What we offer</p>
-      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">Our services</h1>
+      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">Features</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">What's inside</h1>
       <p class="mt-6 text-white/55 text-lg leading-relaxed">
-        Practical help at every stage — from strategy to shipping.
+        Built-in AI skills, a flexible theme system, and zero-config deployment.
       </p>
     </div>
   </section>
 
-  <!-- Service cards -->
+  <!-- AI Skills -->
   <section class="py-24 bg-background">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-text">Built-in Claude skills</h2>
+        <p class="mt-4 text-muted max-w-xl mx-auto">
+          Custom skills ship with the repo in <code class="text-sm bg-surface px-2 py-0.5 rounded border border-border">.claude/skills/</code> — they're available automatically in Claude Code.
+        </p>
+      </div>
+
       <div class="grid md:grid-cols-2 gap-8">
         <Card
-          icon="🎯"
-          title="Strategy & Consulting"
-          description="We work alongside your team to clarify goals, map priorities, and build a plan that's actually executable. No 80-page decks — just focused action."
+          icon="🏢"
+          title="customer-setup"
+          description="Walks through full customer onboarding: name, colors, content, favicon. Say 'Set up for [customer name]' and it handles everything."
         />
         <Card
-          icon="⚡"
-          title="Web & Technology"
-          description="Fast, modern websites and web apps built with the right tools for the job. We prefer boring, proven tech over shiny new frameworks."
+          icon="📄"
+          title="add-page"
+          description="Creates new pages following the established layout pattern. Say 'Add a pricing page' and it builds it using BaseLayout, Header, and Footer."
         />
         <Card
-          icon="🤖"
-          title="AI Integration"
-          description="We help you identify where AI genuinely saves time, then integrate it into your workflow — without hype or unnecessary complexity."
+          icon="🎨"
+          title="design-component"
+          description="Creates polished UI components with strong design principles — no generic AI aesthetics. Say 'Design a testimonials section' to try it."
         />
         <Card
-          icon="📈"
-          title="Growth & Analytics"
-          description="Understand where your users come from, what they do, and how to get more of them to do the thing that matters to your business."
+          icon="🖌️"
+          title="update-theme"
+          description="Changes colors and fonts across the entire site consistently. Say 'Change the theme to warm earthy tones' and it updates the full color system."
         />
       </div>
     </div>
   </section>
 
-  <!-- Process -->
+  <!-- Theme system -->
   <section class="py-24 bg-surface border-t border-border">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-display text-3xl font-semibold text-text mb-12">How we work</h2>
-      <ol class="space-y-8 text-left">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 class="font-display text-3xl font-semibold text-text mb-6">One-file theme system</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          All brand colors are CSS custom properties in a single <code class="text-sm bg-background px-2 py-0.5 rounded border border-border">@theme {'{}'}</code> block. Change the primary color and the entire site — buttons, headers, hero, footer — updates instantly.
+        </p>
+        <p class="text-muted leading-relaxed">
+          No Tailwind config file, no scattered color values. Just one place to define your brand.
+        </p>
+      </div>
+      <div class="bg-primary-dark rounded-2xl p-6 overflow-x-auto">
+        <pre class="text-sm text-white/80 leading-relaxed"><code>{`@theme {
+  --color-primary: #1E40AF;
+  --color-accent: #06B6D4;
+  --color-background: #F8FAFC;
+  --color-text: #0F172A;
+  --color-muted: #64748B;
+}`}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="py-24 bg-background border-t border-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-text">Starter components</h2>
+        <p class="mt-4 text-muted max-w-xl mx-auto">
+          Four reusable components that cover most marketing site needs. All are typed with TypeScript props and use theme colors.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { step: '01', title: 'Discovery', text: 'We start with a conversation to understand your business, goals, and constraints.' },
-          { step: '02', title: 'Plan', text: 'We propose a focused scope with clear deliverables and a realistic timeline.' },
-          { step: '03', title: 'Build', text: 'We work fast, communicate often, and ship incrementally so you see progress.' },
-          { step: '04', title: 'Improve', text: 'After launch, we measure results and make adjustments based on real data.' },
-        ].map((item) => (
-          <li class="flex gap-6 items-start">
-            <span class="shrink-0 font-display text-2xl font-semibold text-accent">{item.step}</span>
-            <div>
-              <h3 class="font-semibold text-text mb-1">{item.title}</h3>
-              <p class="text-muted text-sm leading-relaxed">{item.text}</p>
-            </div>
-          </li>
+          { icon: '📌', name: 'Header.astro', detail: 'Sticky nav, mobile menu, reads from site.config' },
+          { icon: '🦶', name: 'Footer.astro', detail: 'Dark footer with links, email, copyright' },
+          { icon: '🏔️', name: 'Hero.astro', detail: 'Full-width hero with headline, CTAs, dot-grid bg' },
+          { icon: '🃏', name: 'Card.astro', detail: 'Flexible card: icon, title, description, link' },
+        ].map((c) => (
+          <div class="text-center p-6 rounded-xl border border-border">
+            <div class="text-3xl mb-3">{c.icon}</div>
+            <h3 class="font-mono text-sm font-semibold text-text">{c.name}</h3>
+            <p class="text-muted text-xs mt-2">{c.detail}</p>
+          </div>
         ))}
-      </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="py-20 bg-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white mb-6">
+        Zero-config deployment
+      </h2>
+      <p class="text-white/65 mb-4 text-lg">
+        Push to <code class="bg-white/10 px-2 py-0.5 rounded text-white">main</code> and GitHub Actions builds and deploys to GitHub Pages automatically.
+      </p>
+      <p class="text-white/45 text-sm">
+        One-time setup: Settings → Pages → Source: GitHub Actions.
+      </p>
     </div>
   </section>
 

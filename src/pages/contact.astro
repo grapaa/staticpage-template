@@ -5,131 +5,105 @@ import Footer from '../components/Footer.astro';
 import { site } from '../lib/site.config';
 ---
 
-<BaseLayout title={`Contact — ${site.name}`} description="Get in touch. We'd love to hear from you.">
+<BaseLayout title={`Example Prompts — ${site.name}`} description="Copy-paste AI prompts to vibecode your customer site.">
   <Header slot="header" />
 
   <!-- Page header -->
   <section class="bg-primary-dark py-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">Let's talk</p>
-      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">Get in touch</h1>
+      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">Copy & paste</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">Example prompts</h1>
       <p class="mt-6 text-white/55 text-lg">
-        Tell us about your project and we'll get back to you within one business day.
+        Ready-to-use prompts for Claude Code and GitHub Copilot. Just swap in your customer's details.
       </p>
     </div>
   </section>
 
-  <!-- Contact form + info -->
+  <!-- Prompt categories -->
   <section class="py-24 bg-background">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16">
-      <!-- Form -->
-      <div class="bg-surface rounded-2xl border border-border p-8">
-        <h2 class="font-display text-2xl font-semibold text-text mb-8">Send us a message</h2>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
-        <!--
-          ⚠️ CONFIGURE YOUR FORM HANDLER before going live!
-          Replace action="" with your preferred solution:
-          - Formspree: action="https://formspree.io/f/YOUR_ID"
-          - Netlify Forms: add netlify attribute to <form>
-          - Custom API endpoint
-        -->
-        <form id="contact-form" class="space-y-6" action="" method="POST">
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label for="name" class="block text-sm font-medium text-text mb-1.5">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                class="w-full px-4 py-2.5 text-sm border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-                placeholder="Jane Smith"
-              />
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-text mb-1.5">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                class="w-full px-4 py-2.5 text-sm border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-                placeholder="jane@example.com"
-              />
-            </div>
+      <!-- Initial setup -->
+      <div>
+        <h2 class="font-display text-2xl font-semibold text-text mb-2">🏢 Initial customer setup</h2>
+        <p class="text-muted text-sm mb-6">Use the built-in <code class="bg-surface px-1.5 py-0.5 rounded border border-border text-xs">customer-setup</code> skill to configure everything at once.</p>
+        <div class="space-y-4">
+          <div class="bg-primary-dark rounded-xl p-5">
+            <pre class="text-sm text-white/80 whitespace-pre-wrap leading-relaxed"><code>Set up this template for a law firm called "Smith & Partners".
+They want a professional, trustworthy feel.
+Primary color: navy blue (#1B3A5C).
+Accent: gold (#C9A84C).
+Email: info@smithpartners.com
+Location: London, UK</code></pre>
           </div>
-
-          <div>
-            <label for="subject" class="block text-sm font-medium text-text mb-1.5">Subject</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              class="w-full px-4 py-2.5 text-sm border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-              placeholder="What's this about?"
-            />
+          <div class="bg-primary-dark rounded-xl p-5">
+            <pre class="text-sm text-white/80 whitespace-pre-wrap leading-relaxed"><code>Configure this for a yoga studio called "Still Point".
+Calm, minimal, lots of whitespace. Muted sage green palette.
+They offer classes, retreats, and teacher training.</code></pre>
           </div>
-
-          <div>
-            <label for="message" class="block text-sm font-medium text-text mb-1.5">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              required
-              class="w-full px-4 py-2.5 text-sm border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition resize-none"
-              placeholder="Tell us about your project..."
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full py-3 text-sm font-medium text-white bg-primary rounded-full hover:bg-primary-light transition-colors"
-          >
-            Send message
-          </button>
-        </form>
-      </div>
-
-      <!-- Contact info -->
-      <div class="flex flex-col gap-8">
-        <div>
-          <h2 class="font-display text-2xl font-semibold text-text mb-6">Contact info</h2>
-          <dl class="space-y-4">
-            <div>
-              <dt class="text-xs uppercase tracking-widest text-muted font-medium mb-1">Email</dt>
-              <dd>
-                <a href={`mailto:${site.email}`} class="text-primary hover:text-primary-light transition-colors">
-                  {site.email}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt class="text-xs uppercase tracking-widest text-muted font-medium mb-1">Location</dt>
-              <dd class="text-text">{site.location}</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="bg-surface rounded-2xl border border-border p-8">
-          <h3 class="font-semibold text-text mb-3">Response time</h3>
-          <p class="text-muted text-sm leading-relaxed">
-            We typically respond within one business day. For urgent matters, email us directly.
-          </p>
         </div>
       </div>
+
+      <!-- Design -->
+      <div>
+        <h2 class="font-display text-2xl font-semibold text-text mb-2">🎨 Design & styling</h2>
+        <p class="text-muted text-sm mb-6">Use <code class="bg-surface px-1.5 py-0.5 rounded border border-border text-xs">update-theme</code> or <code class="bg-surface px-1.5 py-0.5 rounded border border-border text-xs">design-component</code> skills.</p>
+        <div class="space-y-4">
+          <div class="bg-primary-dark rounded-xl p-5">
+            <pre class="text-sm text-white/80 whitespace-pre-wrap leading-relaxed"><code>Update the theme to use warm earthy tones — terracotta primary (#C2703E),
+cream background (#FFF8F0), and a serif display font like Playfair Display.</code></pre>
+          </div>
+          <div class="bg-primary-dark rounded-xl p-5">
+            <pre class="text-sm text-white/80 whitespace-pre-wrap leading-relaxed"><code>Design a testimonials section with 3 client quotes in cards,
+each with a star rating, client name, and company. Use a subtle
+background pattern.</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pages -->
+      <div>
+        <h2 class="font-display text-2xl font-semibold text-text mb-2">📄 Adding pages</h2>
+        <p class="text-muted text-sm mb-6">Use the <code class="bg-surface px-1.5 py-0.5 rounded border border-border text-xs">add-page</code> skill.</p>
+        <div class="space-y-4">
+          <div class="bg-primary-dark rounded-xl p-5">
+            <pre class="text-sm text-white/80 whitespace-pre-wrap leading-relaxed"><code>Add a pricing page with three tiers: Starter ($29/mo),
+Professional ($79/mo), and Enterprise (custom pricing).
+Include a feature comparison table.</code></pre>
+          </div>
+          <div class="bg-primary-dark rounded-xl p-5">
+            <pre class="text-sm text-white/80 whitespace-pre-wrap leading-relaxed"><code>Add a team page showing 4 team members in a grid.
+Each person should have a photo placeholder, name, role,
+and a short bio. Include LinkedIn links.</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div>
+        <h2 class="font-display text-2xl font-semibold text-text mb-2">✍️ Content rewriting</h2>
+        <p class="text-muted text-sm mb-6">Just describe the customer and ask.</p>
+        <div class="space-y-4">
+          <div class="bg-primary-dark rounded-xl p-5">
+            <pre class="text-sm text-white/80 whitespace-pre-wrap leading-relaxed"><code>Rewrite all page content for a craft brewery called "Hop & Grain".
+Tone: friendly, passionate about craft beer, slightly playful.
+Services: taproom visits, brewery tours, private events, wholesale.
+Values: quality ingredients, community, sustainability.</code></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tip -->
+  <section class="py-16 bg-surface border-t border-border">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-muted text-sm leading-relaxed">
+        <strong class="text-text">Pro tip:</strong> After the initial setup, iterate page by page. Ask the AI to refine one section at a time — it produces better results than trying to do everything in a single prompt.
+      </p>
     </div>
   </section>
 
   <Footer slot="footer" />
 </BaseLayout>
-
-<script>
-  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
-    const form = e.target as HTMLFormElement;
-    if (!form.action || form.action === window.location.href || form.action.endsWith('/contact')) {
-      e.preventDefault();
-      alert('⚠️ Contact form is not configured yet. Set the form action to a Formspree, Netlify, or custom endpoint.');
-    }
-  });
-</script>

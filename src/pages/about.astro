@@ -5,56 +5,90 @@ import Footer from '../components/Footer.astro';
 import { site } from '../lib/site.config';
 ---
 
-<BaseLayout title={`About — ${site.name}`} description="Learn about our mission, values, and team.">
+<BaseLayout title={`Getting Started — ${site.name}`} description="How to fork this template and vibecode a customer site with AI.">
   <Header slot="header" />
 
   <!-- Page header -->
   <section class="bg-primary-dark py-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">About us</p>
-      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">Who we are</h1>
+      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">Quickstart</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">Getting started</h1>
       <p class="mt-6 text-white/55 text-lg leading-relaxed">
-        We're a small, focused team that believes great work comes from clear thinking and genuine care.
+        From fork to deployed customer site — here's what to do.
       </p>
     </div>
   </section>
 
-  <!-- Mission -->
+  <!-- Steps -->
   <section class="py-24 bg-background">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
-      <div>
-        <h2 class="font-display text-3xl font-semibold text-text mb-6">Our mission</h2>
-        <p class="text-muted leading-relaxed mb-4">
-          Replace this with your customer's mission statement. Explain what drives the company and
-          what problems they exist to solve.
-        </p>
-        <p class="text-muted leading-relaxed">
-          Keep it honest, specific, and human. Avoid jargon. Write it the way you'd say it in conversation.
-        </p>
-      </div>
-      <div class="bg-surface rounded-2xl border border-border p-10">
-        <blockquote class="font-display text-2xl text-text leading-snug">
-          "Replace this with a powerful quote from the founder or a core team member."
-        </blockquote>
-        <p class="mt-4 text-sm text-muted">— Founder, {site.name}</p>
-      </div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="space-y-16">
+        {[
+          {
+            step: '01',
+            title: 'Fork or use as template',
+            text: 'Click "Use this template" on GitHub. Clone the new repo locally and run npm install.',
+            code: 'git clone https://github.com/YOUR-USER/YOUR-REPO.git\ncd YOUR-REPO\nnpm install\nnpm run dev',
+          },
+          {
+            step: '02',
+            title: 'Edit the site config',
+            text: 'Open src/lib/site.config.ts — change the name, tagline, nav links, email, and CTA to match your customer.',
+            code: null,
+          },
+          {
+            step: '03',
+            title: 'Set brand colors',
+            text: 'Open src/styles/global.css and update the @theme {} block with the customer\'s brand colors. The entire site updates automatically.',
+            code: null,
+          },
+          {
+            step: '04',
+            title: 'Let AI rewrite the content',
+            text: 'Open Claude Code or VS Code with Copilot and describe your customer. The AI will rewrite all page content, update colors, and add new sections — guided by the built-in CLAUDE.md and Copilot instructions.',
+            code: '"Set up this template for a coffee roastery called Dark Roast Co.\nThey want a dark, moody aesthetic with warm amber accents."',
+          },
+          {
+            step: '05',
+            title: 'Deploy to GitHub Pages',
+            text: 'Go to repo Settings → Pages → Source: GitHub Actions. Every push to main auto-deploys.',
+            code: 'git add -A && git commit -m "Customize for Dark Roast Co"\ngit push origin main',
+          },
+        ].map((item) => (
+          <li class="relative">
+            <div class="flex gap-6 items-start">
+              <span class="shrink-0 font-display text-4xl font-semibold text-accent/30">{item.step}</span>
+              <div class="flex-1">
+                <h3 class="font-display text-xl font-semibold text-text mb-3">{item.title}</h3>
+                <p class="text-muted leading-relaxed">{item.text}</p>
+                {item.code && (
+                  <pre class="mt-4 bg-primary-dark text-white/80 text-sm rounded-xl p-5 overflow-x-auto"><code>{item.code}</code></pre>
+                )}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
-  <!-- Values -->
+  <!-- Key files -->
   <section class="py-24 bg-surface border-t border-border">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="font-display text-3xl font-semibold text-text mb-12 text-center">Our values</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 class="font-display text-3xl font-semibold text-text mb-12 text-center">Key files to know</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
-          { icon: '🤝', title: 'Trust', text: 'We do what we say and say what we think.' },
-          { icon: '🎯', title: 'Clarity', text: 'Simple, focused work beats complex busy work.' },
-          { icon: '🚀', title: 'Speed', text: 'We value fast iterations and quick wins.' },
-        ].map((v) => (
+          { icon: '⚙️', title: 'site.config.ts', text: 'Name, tagline, nav links, email, CTA — the single source of truth for all customer-specific values.' },
+          { icon: '🎨', title: 'global.css', text: '@theme {} block with all brand colors. Change primary & accent to rebrand the entire site instantly.' },
+          { icon: '📄', title: 'src/pages/*.astro', text: '4 starter pages with placeholder content. Replace the words, keep the structure.' },
+          { icon: '🧩', title: 'src/components/', text: 'Header, Footer, Hero, Card — all reusable, all read from site.config.ts.' },
+          { icon: '🤖', title: 'CLAUDE.md', text: 'Instructions for Claude Code. It reads this automatically and understands the entire project.' },
+          { icon: '🔧', title: 'copilot-instructions.md', text: 'Same context for GitHub Copilot. Lives in .github/ so Copilot picks it up.' },
+        ].map((f) => (
           <div class="p-6 rounded-xl border border-border">
-            <div class="text-3xl mb-4">{v.icon}</div>
-            <h3 class="font-semibold text-text mb-2">{v.title}</h3>
-            <p class="text-muted text-sm leading-relaxed">{v.text}</p>
+            <div class="text-2xl mb-3">{f.icon}</div>
+            <h3 class="font-semibold text-text mb-2 font-mono text-sm">{f.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{f.text}</p>
           </div>
         ))}
       </div>
