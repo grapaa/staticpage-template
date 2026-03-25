@@ -95,3 +95,21 @@ Push to `main` → GitHub Actions builds → deploys to GitHub Pages.
 ## Content language
 
 All content is in English. If writing for a non-English customer, update `lang={site.locale}` in `BaseLayout.astro` and translate page copy.
+
+## Recommended Claude skills
+
+When vibecoding in Claude Code, these skills supercharge the workflow:
+
+- **`frontend-design`** — Use for creating distinctive, production-grade UI components, page sections, and layouts. Ask Claude to invoke this when building new page designs, hero sections, feature grids, or any visual UI work. It produces polished, creative code that avoids generic AI aesthetics.
+- **`canvas-design`** — Use for creating visual assets like posters, OG images, or promotional graphics as `.png`/`.pdf` files.
+- **`webapp-testing`** — Use for verifying the live site in a real browser with Playwright. Great for checking responsive layouts, visual regressions, and interactive behavior after changes.
+
+### Example prompts that trigger skills
+
+```
+"Use the frontend-design skill to redesign the hero section with a modern split-layout and animated gradient background"
+
+"Use canvas-design to create a professional og-image.png with the company logo and tagline"
+
+"Use webapp-testing to verify the mobile menu works correctly and take screenshots of all pages at mobile and desktop sizes"
+```

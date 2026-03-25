@@ -112,8 +112,21 @@ The file `CLAUDE.md` provides Claude Code with full project context. In Claude C
 - **Describe the customer:** _"This is for a bakery called Bread & Butter. They want a warm, earthy feel — primary color #8B4513."_
 - **Ask for changes:** _"Replace all placeholder content on every page with copy for Bread & Butter. Focus on artisan craft and community."_
 - **Add features:** _"Add a gallery page showing product photos"_
+- **Use skills for high-quality design:** _"Use the frontend-design skill to create a stunning hero section with a split layout and animated gradient"_
 
 Claude will read `CLAUDE.md` automatically and apply changes consistently across the project.
+
+#### Recommended Claude skills
+
+These skills produce significantly better results for specific tasks:
+
+| Skill | When to use |
+|---|---|
+| `frontend-design` | Building/redesigning page sections, components, layouts — produces polished, production-grade UI |
+| `canvas-design` | Creating OG images, promotional graphics, visual assets as PNG/PDF |
+| `webapp-testing` | Verifying the site in a real browser, checking responsive layouts, taking screenshots |
+
+Just ask Claude to "use the frontend-design skill" in your prompt and it will activate automatically.
 
 ### Recommended vibecoding workflow
 
