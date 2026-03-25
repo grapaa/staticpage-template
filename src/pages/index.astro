@@ -16,8 +16,8 @@ import { url } from '../lib/url';
     headline="Static Page"
     headlineAccent="Template"
     subtext="A production-ready Astro 6 template designed to be vibecoded with AI. Fork it, describe your customer, and let Claude or Copilot build the site."
-    primaryCta={{ label: 'How it works', href: '/services' }}
-    secondaryCta={{ label: 'Get started', href: '/about' }}
+    primaryCta={{ label: 'How it works', href: '/features' }}
+    secondaryCta={{ label: 'Get started', href: '/getting-started' }}
   />
 
   <!-- What's included -->
@@ -35,19 +35,19 @@ import { url } from '../lib/url';
           icon="🏗️"
           title="4 Starter Pages"
           description="Home, About, Services, and Contact — all fully responsive with a clean, modern layout ready to customize."
-          href="/about"
+          href="/getting-started"
         />
         <Card
           icon="🎨"
           title="Theme System"
           description="Swap colors and fonts in one CSS file. The entire site updates instantly — no hunting through components."
-          href="/services"
+          href="/features"
         />
         <Card
           icon="🤖"
           title="AI-Ready"
           description="Ships with CLAUDE.md, Copilot instructions, and 4 built-in Claude skills for guided vibecoding."
-          href="/contact"
+          href="/prompts"
         />
       </div>
     </div>
@@ -88,7 +88,7 @@ import { url } from '../lib/url';
         <span class="text-accent italic">"Set up this template for a bakery called Bread & Butter"</span>
       </p>
       <a
-        href={url('/about')}
+        href={url('/getting-started')}
         class="inline-flex items-center px-8 py-4 text-sm font-medium bg-white text-primary rounded-full hover:bg-accent-light hover:text-primary-dark transition-all duration-200"
       >
         See the quickstart guide →

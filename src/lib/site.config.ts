@@ -14,14 +14,14 @@ export const site = {
 
   /** Navigation links — rendered in Header and Footer */
   nav: [
-    { label: 'Getting Started', href: '/about' },
-    { label: 'Features', href: '/services' },
-    { label: 'Prompts', href: '/contact' },
+    { label: 'Getting Started', href: '/getting-started' },
+    { label: 'Features', href: '/features' },
+    { label: 'Prompts', href: '/prompts' },
   ],
 
   /** Primary CTA shown in Header and Hero */
   cta: {
     label: 'Get started',
-    href: '/about',
+    href: '/getting-started',
   },
 } as const;
