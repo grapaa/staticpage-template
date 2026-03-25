@@ -169,17 +169,55 @@ git push origin main
 
 ```
 src/
-├── components/     # Header, Footer, Hero, Card
+├── components/     # Header, Footer, Hero, ImageText, Card
 ├── layouts/        # BaseLayout.astro (SEO, fonts, structure)
-├── lib/            # site.config.ts ← edit this first
-├── pages/          # index, about, services, contact
+├── lib/            # site.config.ts ← edit this first, url.ts (base-path helper)
+├── pages/          # File-based routing — each .astro file becomes a page
 └── styles/         # global.css with @theme color variables
-public/             # favicon, og-image, static assets
+public/
+├── images/         # Customer photos and images
+├── favicon.svg     # Site favicon
+└── og-image.png    # Social share image
 .github/
 ├── copilot-instructions.md   # Copilot context
 └── workflows/deploy.yml      # GitHub Pages CI/CD
+.claude/skills/               # Project-level Claude skills
 CLAUDE.md                     # Claude Code context
 ```
+
+## Components
+
+| Component | Purpose | Key props |
+|-----------|---------|-----------|
+| **Hero** | Full-width hero section | `headline`, `headlineAccent`, `subtext`, `image`, CTAs |
+| **ImageText** | Side-by-side image + text | `title`, `description`, `image`, `reverse`, `href` |
+| **Card** | Feature/service card | `title`, `description`, `icon`, `href` |
+| **Header** | Sticky nav with mobile menu | Reads from `site.config.ts` |
+| **Footer** | Dark footer with links | Reads from `site.config.ts` |
+
+### Using images
+
+Add customer photos to `public/images/` and reference them in components:
+
+```astro
+<!-- Hero with background image -->
+<Hero
+  headline="Welcome"
+  image="/images/hero.jpg"
+  imageAlt="Restaurant interior"
+/>
+
+<!-- Side-by-side image + text -->
+<ImageText
+  title="Our Story"
+  description="Founded in 1898..."
+  image="/images/about.jpg"
+  imageAlt="Historic building"
+  reverse
+/>
+```
+
+Hero falls back to a gradient background when no image is provided.
 
 ## Adding a new page
 
@@ -187,7 +225,9 @@ CLAUDE.md                     # Claude Code context
 # 1. Create the page
 touch src/pages/new-page.astro
 
-# 2. Use the same layout pattern as about.astro
+# 2. Use the same layout pattern as any existing page
+# The href in site.nav must match the filename:
+# href: '/new-page' → src/pages/new-page.astro
 
 # 3. Add it to site.nav in site.config.ts
 ```

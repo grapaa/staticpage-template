@@ -12,6 +12,9 @@ export const site = {
   email: 'hello@example.com',
   location: 'Your City, Country',
 
+  /** Copyright text shown in Footer (use {year} for dynamic year) */
+  copyright: 'All rights reserved.',
+
   /** Navigation links — rendered in Header and Footer */
   nav: [
     { label: 'Getting Started', href: '/getting-started' },

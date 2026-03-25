@@ -1,0 +1,85 @@
+---
+/**
+ * ImageText — a side-by-side section with an image and text.
+ * Use `reverse` to flip the layout. Great for about sections,
+ * feature highlights, team intros, etc.
+ *
+ * For the image path, use paths relative to `/public` (e.g., `/images/photo.jpg`).
+ * External URLs (https://...) also work.
+ */
+import { url } from '../lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt?: string;
+  reverse?: boolean;
+  eyebrow?: string;
+  href?: string;
+  hrefLabel?: string;
+  class?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  imageAlt = '',
+  reverse = false,
+  eyebrow,
+  href,
+  hrefLabel = 'Learn more →',
+  class: className,
+} = Astro.props;
+
+const imgSrc = image.startsWith('http') ? image : url(image);
+---
+
+<section class:list={['py-24', className]}>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class:list={[
+      'grid md:grid-cols-2 gap-12 lg:gap-16 items-center',
+      reverse && 'md:[direction:rtl] md:[&>*]:[direction:ltr]',
+    ]}>
+      <!-- Image -->
+      <div class="relative">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src={imgSrc}
+            alt={imageAlt}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <!-- Decorative accent corner -->
+        <div class="absolute -bottom-3 -right-3 w-24 h-24 bg-accent/10 rounded-2xl -z-10"></div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        {eyebrow && (
+          <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">
+            {eyebrow}
+          </p>
+        )}
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-text mb-6">
+          {title}
+        </h2>
+        <p class="text-muted text-lg leading-relaxed mb-6">
+          {description}
+        </p>
+        <!-- Slot for additional custom content -->
+        <slot />
+        {href && (
+          <a
+            href={url(href)}
+            class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light transition-colors"
+          >
+            {hrefLabel}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

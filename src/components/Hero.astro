@@ -6,6 +6,8 @@ interface Props {
   headline: string;
   headlineAccent?: string;
   subtext?: string;
+  image?: string;
+  imageAlt?: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
 }
@@ -15,17 +17,27 @@ const {
   headline,
   headlineAccent,
   subtext,
+  image,
+  imageAlt = '',
   primaryCta,
   secondaryCta,
 } = Astro.props;
+
+const bgImage = image ? `url(${image.startsWith('http') ? image : url(image)})` : undefined;
 ---
 
 <section class="hero-section relative overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
-  <!-- Background -->
-  <div class="absolute inset-0 bg-primary-dark"></div>
+  <!-- Background: image or solid color -->
+  {bgImage ? (
+    <div class="absolute inset-0 bg-cover bg-center" style={`background-image: ${bgImage}`} role="img" aria-label={imageAlt}>
+      <div class="absolute inset-0 bg-primary-dark/70"></div>
+    </div>
+  ) : (
+    <div class="absolute inset-0 bg-primary-dark"></div>
+  )}
 
-  <!-- Subtle dot-grid texture -->
-  <div class="hero-grid absolute inset-0"></div>
+  <!-- Subtle dot-grid texture (only when no image) -->
+  {!bgImage && <div class="hero-grid absolute inset-0"></div>}
 
   <!-- Radial accent glow -->
   <div

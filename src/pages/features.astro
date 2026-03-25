@@ -87,13 +87,17 @@ import { site } from '../lib/site.config';
         <p class="mt-4 text-muted max-w-xl mx-auto">
           Four reusable components that cover most marketing site needs. All are typed with TypeScript props and use theme colors.
         </p>
+        <p class="mt-2 text-muted max-w-xl mx-auto text-sm">
+          The Hero supports optional background images, and the new ImageText component makes it easy to build rich content pages.
+        </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {[
           { icon: '📌', name: 'Header.astro', detail: 'Sticky nav, mobile menu, reads from site.config' },
-          { icon: '🦶', name: 'Footer.astro', detail: 'Dark footer with links, email, copyright' },
-          { icon: '🏔️', name: 'Hero.astro', detail: 'Full-width hero with headline, CTAs, dot-grid bg' },
+          { icon: '🦶', name: 'Footer.astro', detail: 'Dark footer with links, email, configurable copyright' },
+          { icon: '🏔️', name: 'Hero.astro', detail: 'Full-width hero with optional background image' },
+          { icon: '🖼️', name: 'ImageText.astro', detail: 'Side-by-side image + text, reversible layout' },
           { icon: '🃏', name: 'Card.astro', detail: 'Flexible card: icon, title, description, link' },
         ].map((c) => (
           <div class="text-center p-6 rounded-xl border border-border">
