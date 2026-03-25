@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+import { site } from '../lib/site.config';
+---
+
+<BaseLayout title={`${site.name} — ${site.tagline}`}>
+  <Header slot="header" />
+
+  <Hero
+    eyebrow="Strategy + Technology"
+    headline="We help businesses"
+    headlineAccent="grow smarter."
+    subtext={site.description}
+    primaryCta={{ label: site.cta.label, href: site.cta.href }}
+    secondaryCta={{ label: 'Our services', href: '/services' }}
+  />
+
+  <!-- Services preview -->
+  <section class="py-24 bg-background">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-text">What we do</h2>
+        <p class="mt-4 text-muted max-w-xl mx-auto">
+          We combine strategic thinking with modern technology to deliver measurable results.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card
+          icon="🎯"
+          title="Strategy"
+          description="Clarify your direction, identify growth opportunities, and build a roadmap that works."
+          href="/services"
+        />
+        <Card
+          icon="⚡"
+          title="Technology"
+          description="Modern web, automation, and AI tools that remove friction and accelerate delivery."
+          href="/services"
+        />
+        <Card
+          icon="📈"
+          title="Growth"
+          description="Data-driven campaigns and optimizations that turn visitors into customers."
+          href="/services"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="py-20 bg-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white mb-6">
+        Ready to get started?
+      </h2>
+      <p class="text-white/65 mb-10 text-lg">
+        Let's talk about your goals and how we can help you reach them.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center px-8 py-4 text-sm font-medium bg-white text-primary rounded-full hover:bg-accent-light hover:text-primary-dark transition-all duration-200"
+      >
+        {site.cta.label}
+      </a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

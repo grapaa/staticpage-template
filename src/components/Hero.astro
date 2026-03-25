@@ -1,0 +1,92 @@
+---
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  headlineAccent?: string;
+  subtext?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}
+
+const {
+  eyebrow,
+  headline,
+  headlineAccent,
+  subtext,
+  primaryCta,
+  secondaryCta,
+} = Astro.props;
+---
+
+<section class="hero-section relative overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-primary-dark"></div>
+
+  <!-- Subtle dot-grid texture -->
+  <div class="hero-grid absolute inset-0"></div>
+
+  <!-- Radial accent glow -->
+  <div
+    class="absolute -bottom-48 -right-48 w-[600px] h-[600px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle at center, rgba(6,182,212,0.12), transparent 65%)"
+  ></div>
+
+  <!-- Content -->
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
+    {eyebrow && (
+      <p class="animate-fade-up text-accent text-xs font-medium uppercase tracking-[0.25em] mb-8">
+        {eyebrow}
+      </p>
+    )}
+
+    <h1
+      class="animate-fade-up font-display font-semibold text-white leading-tight tracking-tight"
+      style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay: 100ms;"
+    >
+      {headline}
+      {headlineAccent && (
+        <span class="text-accent block">{headlineAccent}</span>
+      )}
+    </h1>
+
+    {subtext && (
+      <p
+        class="animate-fade-up mt-8 text-white/55 text-lg leading-relaxed max-w-lg"
+        style="animation-delay: 240ms"
+      >
+        {subtext}
+      </p>
+    )}
+
+    {(primaryCta || secondaryCta) && (
+      <div
+        class="animate-fade-up mt-10 flex flex-col sm:flex-row gap-4"
+        style="animation-delay: 380ms"
+      >
+        {primaryCta && (
+          <a
+            href={primaryCta.href}
+            class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-medium bg-white text-primary rounded-full hover:bg-accent-light hover:text-primary-dark transition-all duration-200"
+          >
+            {primaryCta.label}
+          </a>
+        )}
+        {secondaryCta && (
+          <a
+            href={secondaryCta.href}
+            class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-medium text-white/70 border border-white/20 rounded-full hover:text-white hover:border-white/40 transition-all duration-200"
+          >
+            {secondaryCta.label}&nbsp;→
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-grid {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+</style>

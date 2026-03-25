@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Card from '../components/Card.astro';
+import { site } from '../lib/site.config';
+---
+
+<BaseLayout title={`Services — ${site.name}`} description="Explore what we offer and how we can help.">
+  <Header slot="header" />
+
+  <!-- Page header -->
+  <section class="bg-primary-dark py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">What we offer</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">Our services</h1>
+      <p class="mt-6 text-white/55 text-lg leading-relaxed">
+        Practical help at every stage — from strategy to shipping.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service cards -->
+  <section class="py-24 bg-background">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8">
+        <Card
+          icon="🎯"
+          title="Strategy & Consulting"
+          description="We work alongside your team to clarify goals, map priorities, and build a plan that's actually executable. No 80-page decks — just focused action."
+        />
+        <Card
+          icon="⚡"
+          title="Web & Technology"
+          description="Fast, modern websites and web apps built with the right tools for the job. We prefer boring, proven tech over shiny new frameworks."
+        />
+        <Card
+          icon="🤖"
+          title="AI Integration"
+          description="We help you identify where AI genuinely saves time, then integrate it into your workflow — without hype or unnecessary complexity."
+        />
+        <Card
+          icon="📈"
+          title="Growth & Analytics"
+          description="Understand where your users come from, what they do, and how to get more of them to do the thing that matters to your business."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-24 bg-surface border-t border-border">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-3xl font-semibold text-text mb-12">How we work</h2>
+      <ol class="space-y-8 text-left">
+        {[
+          { step: '01', title: 'Discovery', text: 'We start with a conversation to understand your business, goals, and constraints.' },
+          { step: '02', title: 'Plan', text: 'We propose a focused scope with clear deliverables and a realistic timeline.' },
+          { step: '03', title: 'Build', text: 'We work fast, communicate often, and ship incrementally so you see progress.' },
+          { step: '04', title: 'Improve', text: 'After launch, we measure results and make adjustments based on real data.' },
+        ].map((item) => (
+          <li class="flex gap-6 items-start">
+            <span class="shrink-0 font-display text-2xl font-semibold text-accent">{item.step}</span>
+            <div>
+              <h3 class="font-semibold text-text mb-1">{item.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{item.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

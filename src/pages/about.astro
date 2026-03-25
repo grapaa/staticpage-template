@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site.config';
+---
+
+<BaseLayout title={`About — ${site.name}`} description="Learn about our mission, values, and team.">
+  <Header slot="header" />
+
+  <!-- Page header -->
+  <section class="bg-primary-dark py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-accent text-xs font-medium uppercase tracking-[0.25em] mb-4">About us</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-semibold text-white">Who we are</h1>
+      <p class="mt-6 text-white/55 text-lg leading-relaxed">
+        We're a small, focused team that believes great work comes from clear thinking and genuine care.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="py-24 bg-background">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 class="font-display text-3xl font-semibold text-text mb-6">Our mission</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Replace this with your customer's mission statement. Explain what drives the company and
+          what problems they exist to solve.
+        </p>
+        <p class="text-muted leading-relaxed">
+          Keep it honest, specific, and human. Avoid jargon. Write it the way you'd say it in conversation.
+        </p>
+      </div>
+      <div class="bg-surface rounded-2xl border border-border p-10">
+        <blockquote class="font-display text-2xl text-text leading-snug">
+          "Replace this with a powerful quote from the founder or a core team member."
+        </blockquote>
+        <p class="mt-4 text-sm text-muted">— Founder, {site.name}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-24 bg-surface border-t border-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-text mb-12 text-center">Our values</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          { icon: '🤝', title: 'Trust', text: 'We do what we say and say what we think.' },
+          { icon: '🎯', title: 'Clarity', text: 'Simple, focused work beats complex busy work.' },
+          { icon: '🚀', title: 'Speed', text: 'We value fast iterations and quick wins.' },
+        ].map((v) => (
+          <div class="p-6 rounded-xl border border-border">
+            <div class="text-3xl mb-4">{v.icon}</div>
+            <h3 class="font-semibold text-text mb-2">{v.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

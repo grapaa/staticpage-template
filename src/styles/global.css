@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/**
+ * Brand theme — edit these variables to match the customer's brand.
+ * All colors are used throughout via Tailwind utility classes:
+ *   text-primary, bg-accent, text-muted, bg-background, etc.
+ */
+@theme {
+  /* --- Primary brand color (buttons, headings, logo) --- */
+  --color-primary: #1E40AF;
+  --color-primary-light: #3B5FCC;
+  --color-primary-dark: #1230A0;
+
+  /* --- Accent color (highlights, CTAs, hover states) --- */
+  --color-accent: #06B6D4;
+  --color-accent-light: #22D3EE;
+
+  /* --- Page backgrounds --- */
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+
+  /* --- Text --- */
+  --color-text: #0F172A;
+  --color-muted: #64748B;
+
+  /* --- Borders & dividers --- */
+  --color-border: #E2E8F0;
+
+  /* --- Typography --- */
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}

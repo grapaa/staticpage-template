@@ -1,0 +1,46 @@
+---
+/**
+ * Generic Card component — useful for services, features, team members, etc.
+ * Pass content via props or use the default slot for custom body content.
+ */
+interface Props {
+  title: string;
+  description?: string;
+  icon?: string;
+  href?: string;
+  class?: string;
+}
+
+const { title, description, icon, href, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    'group bg-surface rounded-2xl border border-border p-8 transition-all duration-200 hover:shadow-md hover:border-primary/20',
+    className,
+  ]}
+>
+  {icon && (
+    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-2xl">
+      {icon}
+    </div>
+  )}
+
+  <h3 class="font-display text-lg font-semibold text-text mb-3">{title}</h3>
+
+  {description && (
+    <p class="text-muted text-sm leading-relaxed">{description}</p>
+  )}
+
+  <!-- Optional custom content -->
+  <slot />
+
+  {href && (
+    <a
+      href={href}
+      class="inline-flex items-center mt-6 text-sm font-medium text-primary hover:text-primary-light transition-colors"
+    >
+      Learn more&nbsp;→
+    </a>
+  )}
+</div>
