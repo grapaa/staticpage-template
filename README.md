@@ -116,17 +116,24 @@ The file `CLAUDE.md` provides Claude Code with full project context. In Claude C
 
 Claude will read `CLAUDE.md` automatically and apply changes consistently across the project.
 
-#### Recommended Claude skills
+#### Built-in project skills
 
-These skills produce significantly better results for specific tasks:
+The repo ships with custom Claude skills in `.claude/skills/` — they activate automatically:
+
+| Skill | Example prompt |
+|---|---|
+| `customer-setup` | _"Set up for a bakery called Bread & Butter with warm earthy tones"_ |
+| `add-page` | _"Add a pricing page with three tiers"_ |
+| `design-component` | _"Design a testimonials section with client photos and star ratings"_ |
+| `update-theme` | _"Change the colors to match brand hex #8B4513 with a cream background"_ |
+
+#### External skills worth using
 
 | Skill | When to use |
 |---|---|
-| `frontend-design` | Building/redesigning page sections, components, layouts — produces polished, production-grade UI |
-| `canvas-design` | Creating OG images, promotional graphics, visual assets as PNG/PDF |
-| `webapp-testing` | Verifying the site in a real browser, checking responsive layouts, taking screenshots |
-
-Just ask Claude to "use the frontend-design skill" in your prompt and it will activate automatically.
+| `frontend-design` | Building/redesigning page sections with extra design polish |
+| `canvas-design` | Creating OG images, promotional graphics, visual assets |
+| `webapp-testing` | Verifying the site in a real browser, taking screenshots |
 
 ### Recommended vibecoding workflow
 

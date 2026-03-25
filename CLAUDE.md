@@ -98,18 +98,29 @@ All content is in English. If writing for a non-English customer, update `lang={
 
 ## Recommended Claude skills
 
-When vibecoding in Claude Code, these skills supercharge the workflow:
+This repo ships with **project-level skills** in `.claude/skills/` that are automatically available:
 
-- **`frontend-design`** — Use for creating distinctive, production-grade UI components, page sections, and layouts. Ask Claude to invoke this when building new page designs, hero sections, feature grids, or any visual UI work. It produces polished, creative code that avoids generic AI aesthetics.
-- **`canvas-design`** — Use for creating visual assets like posters, OG images, or promotional graphics as `.png`/`.pdf` files.
-- **`webapp-testing`** — Use for verifying the live site in a real browser with Playwright. Great for checking responsive layouts, visual regressions, and interactive behavior after changes.
+| Skill | Trigger | What it does |
+|---|---|---|
+| `customer-setup` | "Set up for [customer]" | Walks through full customer config: name, colors, content, favicon |
+| `add-page` | "Add a [pricing/team/...] page" | Creates a new page following the established layout pattern |
+| `design-component` | "Design a [hero/card/...] section" | Creates polished UI components with high visual quality |
+| `update-theme` | "Change colors to [brand]" | Updates the full color system + fonts consistently |
 
-### Example prompts that trigger skills
+### External skills worth using
+
+These are not bundled but available in Claude Code:
+
+- **`frontend-design`** — For creating distinctive, production-grade UI when you want extra design polish
+- **`canvas-design`** — For creating OG images, promotional graphics, visual assets as PNG/PDF
+- **`webapp-testing`** — For verifying the site in a real browser with Playwright
+
+### Example prompts
 
 ```
-"Use the frontend-design skill to redesign the hero section with a modern split-layout and animated gradient background"
-
-"Use canvas-design to create a professional og-image.png with the company logo and tagline"
-
-"Use webapp-testing to verify the mobile menu works correctly and take screenshots of all pages at mobile and desktop sizes"
+"Use customer-setup to configure this for a law firm called Smith & Partners"
+"Add a pricing page with three tiers"
+"Design a testimonials section with client quotes and star ratings"
+"Update the theme to use warm earthy tones — browns and terracotta"
+"Use the frontend-design skill to redesign the hero with a split layout"
 ```
