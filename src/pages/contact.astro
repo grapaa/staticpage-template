@@ -27,12 +27,13 @@ import { site } from '../lib/site.config';
         <h2 class="font-display text-2xl font-semibold text-text mb-8">Send us a message</h2>
 
         <!--
-          Replace this with your preferred form solution:
-          - Netlify Forms (add netlify attribute)
-          - Formspree (action="https://formspree.io/f/YOUR_ID")
+          ⚠️ CONFIGURE YOUR FORM HANDLER before going live!
+          Replace action="" with your preferred solution:
+          - Formspree: action="https://formspree.io/f/YOUR_ID"
+          - Netlify Forms: add netlify attribute to <form>
           - Custom API endpoint
         -->
-        <form class="space-y-6" action="#" method="POST">
+        <form id="contact-form" class="space-y-6" action="" method="POST">
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
               <label for="name" class="block text-sm font-medium text-text mb-1.5">Name</label>
@@ -122,3 +123,13 @@ import { site } from '../lib/site.config';
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<script>
+  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+    const form = e.target as HTMLFormElement;
+    if (!form.action || form.action === window.location.href || form.action.endsWith('/contact')) {
+      e.preventDefault();
+      alert('⚠️ Contact form is not configured yet. Set the form action to a Formspree, Netlify, or custom endpoint.');
+    }
+  });
+</script>

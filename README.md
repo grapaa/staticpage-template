@@ -37,7 +37,7 @@ export const site = {
   name: 'Customer Name',
   tagline: 'Short punchy tagline.',
   description: 'One-sentence description for SEO and social cards.',
-  url: 'https://your-username.github.io/repo-name',
+  url: 'https://your-username.github.io',
   email: 'hello@customer.com',
   location: 'City, Country',
   nav: [
@@ -71,10 +71,12 @@ In **`astro.config.mjs`**, update the `site` value:
 ```js
 export default defineConfig({
   site: 'https://YOUR-USERNAME.github.io',
-  // If deploying to a subpath (github.io/repo-name):
+  // If deploying to a subpath (github.io/repo-name), also set:
   // base: '/repo-name',
 });
 ```
+
+> **Subpath deploy?** If the site lives at `username.github.io/repo-name`, you need **both** `site` (the origin) and `base` (the path prefix). Also update `site.url` in `site.config.ts` to the full URL.
 
 ### 7. Replace placeholder content
 
