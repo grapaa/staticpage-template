@@ -1,5 +1,6 @@
 ---
 import { site } from '../lib/site.config';
+import { url } from '../lib/url';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -18,7 +19,7 @@ const currentYear = new Date().getFullYear();
       <!-- Links -->
       <nav class="grid grid-cols-2 gap-x-12 gap-y-2.5">
         {site.nav.map((item) => (
-          <a href={item.href} class="text-sm text-white/45 hover:text-white transition-colors">
+          <a href={url(item.href)} class="text-sm text-white/45 hover:text-white transition-colors">
             {item.label}
           </a>
         ))}

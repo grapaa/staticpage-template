@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Card from '../components/Card.astro';
 import { site } from '../lib/site.config';
+import { url } from '../lib/url';
 ---
 
 <BaseLayout title={`${site.name} — ${site.tagline}`}>
@@ -87,7 +88,7 @@ import { site } from '../lib/site.config';
         <span class="text-accent italic">"Set up this template for a bakery called Bread & Butter"</span>
       </p>
       <a
-        href="/about"
+        href={url('/about')}
         class="inline-flex items-center px-8 py-4 text-sm font-medium bg-white text-primary rounded-full hover:bg-accent-light hover:text-primary-dark transition-all duration-200"
       >
         See the quickstart guide →

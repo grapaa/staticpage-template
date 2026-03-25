@@ -1,5 +1,6 @@
 ---
 import { site } from '../lib/site.config';
+import { url } from '../lib/url';
 
 const currentPath = Astro.url.pathname;
 ---
@@ -7,7 +8,7 @@ const currentPath = Astro.url.pathname;
 <header class="bg-background/90 backdrop-blur-md border-b border-border sticky top-0 z-50">
   <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Logo: replace text with <img> if you have a logo asset -->
-    <a href="/" class="font-display text-xl font-semibold text-primary hover:text-primary-light transition-colors">
+    <a href={url('/')} class="font-display text-xl font-semibold text-primary hover:text-primary-light transition-colors">
       {site.name}
     </a>
 
@@ -16,10 +17,10 @@ const currentPath = Astro.url.pathname;
       {site.nav.map((item) => (
         <li>
           <a
-            href={item.href}
+            href={url(item.href)}
             class:list={[
               'px-4 py-2 text-sm font-medium rounded-md transition-colors',
-              currentPath === item.href
+              currentPath === url(item.href) || currentPath === url(item.href) + '/'
                 ? 'text-primary'
                 : 'text-muted hover:text-text',
             ]}
@@ -30,7 +31,7 @@ const currentPath = Astro.url.pathname;
       ))}
       <li class="ml-4">
         <a
-          href={site.cta.href}
+          href={url(site.cta.href)}
           class="inline-flex items-center px-5 py-2 text-sm font-medium text-white bg-primary rounded-full hover:bg-primary-light transition-all duration-200"
         >
           {site.cta.label}
@@ -57,10 +58,10 @@ const currentPath = Astro.url.pathname;
       {site.nav.map((item) => (
         <li>
           <a
-            href={item.href}
+            href={url(item.href)}
             class:list={[
               'block px-4 py-2.5 text-sm font-medium rounded-lg transition-colors',
-              currentPath === item.href
+              currentPath === url(item.href) || currentPath === url(item.href) + '/'
                 ? 'text-primary bg-primary/5'
                 : 'text-muted hover:text-text hover:bg-black/5',
             ]}
@@ -71,7 +72,7 @@ const currentPath = Astro.url.pathname;
       ))}
       <li class="pt-2">
         <a
-          href={site.cta.href}
+          href={url(site.cta.href)}
           class="flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary-light transition-colors"
         >
           {site.cta.label}

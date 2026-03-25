@@ -3,6 +3,8 @@
  * Generic Card component — useful for services, features, team members, etc.
  * Pass content via props or use the default slot for custom body content.
  */
+import { url } from '../lib/url';
+
 interface Props {
   title: string;
   description?: string;
@@ -37,7 +39,7 @@ const { title, description, icon, href, class: className } = Astro.props;
 
   {href && (
     <a
-      href={href}
+      href={url(href)}
       class="inline-flex items-center mt-6 text-sm font-medium text-primary hover:text-primary-light transition-colors"
     >
       Learn more&nbsp;→

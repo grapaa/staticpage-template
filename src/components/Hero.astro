@@ -1,4 +1,6 @@
 ---
+import { url } from '../lib/url';
+
 interface Props {
   eyebrow?: string;
   headline: string;
@@ -65,7 +67,7 @@ const {
       >
         {primaryCta && (
           <a
-            href={primaryCta.href}
+            href={url(primaryCta.href)}
             class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-medium bg-white text-primary rounded-full hover:bg-accent-light hover:text-primary-dark transition-all duration-200"
           >
             {primaryCta.label}
@@ -73,7 +75,7 @@ const {
         )}
         {secondaryCta && (
           <a
-            href={secondaryCta.href}
+            href={url(secondaryCta.href)}
             class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-medium text-white/70 border border-white/20 rounded-full hover:text-white hover:border-white/40 transition-all duration-200"
           >
             {secondaryCta.label}&nbsp;→
